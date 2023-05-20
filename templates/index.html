@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decision Making Matrix</title>
+    <link rel="stylesheet" href="/static/style/app.css">
+</head>
+<body>
+    <div class="error">
+        {{errormessage}}
+    </div>
+<div class="mainsection">
+
+    <form action="/createitems" method="post">
+
+        <div class="additems">
+        <input type="text" name="evaluationitems" id="items" placeholder="Enter List of Items to Evaluate" required>
+        <button type="submit" for="items">+</button>
+        </div>
+        <div class="inputeditems">
+        {% for items in listofitems %}
+          <ul>{{items}}</ul>
+        {% endfor %}
+        </div>
+        {% if listofitems != [] %}
+
+        <div class="buttongroup">
+        <form action="pageAction" method="post">
+            <button type="submit" name="resetcontent" class="resetcontent">Reset</button>
+            <button type="submit" name="nextpage" class="nextpage">Next</button>
+        </form>
+        </div>
+        {% endif %}
+
+    </form>
+</div>
+    
+</body>
+<script src="app.js"></script>
+</html>
