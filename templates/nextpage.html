@@ -13,28 +13,27 @@
     </div>
 <div class="mainsection">
 
-    <form action="/createitems" method="post">
+    <form action="/createfactors" method="post">
 
         <div class="additems">
-        <input type="text" name="evaluationitems" id="items" placeholder="Enter List of Items to Evaluate" required>
+        <input type="text" name="factoritems" id="items" placeholder="Enter List of Items to Evaluate" required>
         <button type="submit" for="items">+</button>
         </div>
 
     </form>
         <div class="inputeditems">
-        {% for items in listofitems %}
+        {% for items in listoffactor %}
           <ul>{{items}}</ul>
         {% endfor %}
         </div>
-        {% if listofitems != [] %}
 
         <div class="buttongroup">
-        <form action="pageAction" method="post">
-            <button type="submit" name="submitType" value="reset" class="resetcontent">Reset</button>
+        <form action="pageAction2" method="post">
+            <button type="submit" name="submitType" value="back" class="resetcontent">Back</button>
             <button type="submit" name="submitType"  value="next" class="nextpage">Next</button>
         </form>
         </div>
-        {% endif %}
+
 
    
 </div>

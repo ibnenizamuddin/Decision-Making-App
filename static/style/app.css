@@ -79,19 +79,18 @@
 .buttongroup{
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  flex-direction: row;
-  
+  align-items: center;
+  flex-direction: row-reverse;
+  width: 100%;
 }
 
-.buttongroup .resetcontent, .nextpage{
+.buttongroup .resetcontent, .nextpage, .prevpage{
   font-size: xx-large;
-  margin: 5px;
+  margin: 15px 15px;
   width: 6rem;
   height: 2.5rem;
   border-radius: 10px;
   padding: 1px;
-  text-align: center;
   appearance: none;
   background-color: #FAFBFC;
   border: 1px solid rgba(27, 31, 35, 0.15);
@@ -104,6 +103,12 @@
 }
 
 .nextpage:hover{
+  scale: 110%;
+  background-color: rgb(139, 226, 19);
+}
+
+
+.prevpage:hover{
   scale: 110%;
   background-color: rgb(139, 226, 19);
 }
