@@ -135,4 +135,5 @@ td input{
   padding: 5px;
   margin: 0px;
   font-size: large;
+  min-width: 3rem;
 }
