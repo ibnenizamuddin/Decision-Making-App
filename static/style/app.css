@@ -112,3 +112,19 @@
   scale: 110%;
   background-color: rgb(139, 226, 19);
 }
+
+.inputeditems table , th,tr{
+  border: 1px solid;
+  border-color: black;
+  background-color: #FAFBFC;
+  font-size: xx-large;
+  border-radius: 10px;
+}
+
+td input{
+  width: 80%;
+  align-self: center;
+  padding: 5px;
+  margin: 0px;
+  font-size: large;
+}

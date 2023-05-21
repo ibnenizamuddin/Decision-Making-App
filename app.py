@@ -17,7 +17,6 @@ def additems():
     if request.method=='POST':
         if len(app.config['listofitems'])<5:
             item=request.form.get('evaluationitems')
-            print(app.config['listofitems'])
             app.config['listofitems'].append(item)
             return render_template("index.html",errormessage="",listofitems=app.config['listofitems'])
         else:
@@ -47,7 +46,7 @@ def secondPageActions():
         if submitType=='back':
             return render_template("index.html",errormessage="",listofitems=app.config['listofitems'])
         if submitType=='next':
-            return render_template("finalpage.html",errormessage="",listoffactor=app.config['listoffactor'])
+            return render_template("finalpage.html",errormessage="",listoffactor=app.config['listoffactor'],listofitems=app.config['listofitems'])
 
 
 
@@ -56,7 +55,6 @@ def addfactors():
     if request.method=='POST':
         if len(app.config['listoffactor'])<5:
             item=request.form.get('factoritems')
-            print(app.config['listoffactor'])
             app.config['listoffactor'].append(item)
             return render_template("nextpage.html",errormessage="",listoffactor=app.config['listoffactor'])
         else:
@@ -70,13 +68,36 @@ def finalPageActions():
         if submitType=='back':
             return render_template("nextpage.html",errormessage="",listoffactor=app.config['listoffactor'])
         if submitType=='calculate':
-            return render_template("finalpage.html",errormessage="Calculating",listoffactor="")
+            factorweight= request.form.getlist('factorweight')
+            itemsweight= request.form.getlist('itemsweight')
+            factors=listoffactor=app.config['listoffactor']
+            items=listofitems=app.config['listofitems']
+            print(itemsweight)
+            yindex=0
+            FINAL_SCORE=[]
+            for item in items:
+                index=0
+                sum=0
+                for factor in factors:
+                    sum=sum+(int(factorweight[index])*int(itemsweight[yindex]))
+                    #print(f'{factor} weight is {factorweight[index]}')
+                    index+=1
+                    #print(f'{item} score is {itemsweight[yindex]}')
+                    yindex+=1
+                    
+                FINAL_SCORE.append((item,sum))
+
+            print(FINAL_SCORE)
+
+
+
+            return render_template("finalpage.html",errormessage="Calculating",listoffactor=app.config['listoffactor'],listofitems=app.config['listofitems'])
 
 
 
 @app.route("/finalpage.html")
 def finalpage():
-    return render_template("finalpage.html",errormessage="",listoffactor=app.config['listoffactor'])
+    return render_template("finalpage.html",errormessage="",listoffactor=app.config['listoffactor'],listofitems=app.config['listofitems'])
 
 
 

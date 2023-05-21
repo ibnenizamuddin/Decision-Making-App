@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/static/style/app.css">
 </head>
 <body>
-    <form action="pageAction3" method="post">
+    <form action="pageAction4" method="post">
     <div class="error">
         {{errormessage}}
     </div>
@@ -17,33 +17,13 @@
 
         <div class="inputeditems">
         <table name="MatrixData">
-        <th>Factors</th>
+        <th>Items</th>
+        <th>Scores</th>
 
-        {% for items in listoffactor %}
-          <th>{{items}}</th>
+        {% for items in scores %}
+          <td>{{items.0}}</td>
+          <td>{{items.1}}</td>
         {% endfor %}
-
-        <tr>
-            <td>Weights</td>
-            {% for items in listoffactor %}
-            <td> 
-            <input type="number" name="factorweight" min="1" max="5" value="1">
-            </td>
-           {% endfor %}
-
-        </tr>
-
-        {% for items in listofitems %}
-          <tr>
-            <td>{{items}}</td>
-            {% for items in listoffactor %}
-            <td>
-            <input type="number" name="itemsweight" min="1" max="5" value="1">
-            </td>
-           {% endfor %}
-          </tr>
-        {% endfor %}
-
          </table>
         </div>
        
