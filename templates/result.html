@@ -20,19 +20,20 @@
         <th>Items</th>
         <th>Scores</th>
 
-        {% for items in scores %}
+        {% for items in scoresdata%}
+        <tr>
           <td>{{items.0}}</td>
           <td>{{items.1}}</td>
+        </tr>
         {% endfor %}
          </table>
         </div>
        
 
         <div class="buttongroup">
-            <button type="submit" name="submitType"  value="calculate" class="nextpage">Calculate</button>       
-            <button type="submit" name="submitType" value="back" class="resetcontent">Back</button>
+            <button type="submit" name="submitType" value="start" class="resetcontent">Start</button>
 
-        
+            <button type="submit" name="submitType" value="back" class="resetcontent">Back</button>
         </div>
 
 

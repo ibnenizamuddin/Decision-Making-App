@@ -113,12 +113,15 @@
   background-color: rgb(139, 226, 19);
 }
 
-.inputeditems table , th,tr{
+.inputeditems table , th,td{
   border: 1px solid;
   border-color: black;
   background-color: #FAFBFC;
   font-size: xx-large;
   border-radius: 10px;
+  padding: 5px;
+  align-items: center;
+  text-align: center;
 }
 
 td input{

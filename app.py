@@ -74,7 +74,7 @@ def finalPageActions():
             items=listofitems=app.config['listofitems']
             print(itemsweight)
             yindex=0
-            FINAL_SCORE=[]
+            SCORES=[]
             for item in items:
                 index=0
                 sum=0
@@ -85,13 +85,11 @@ def finalPageActions():
                     #print(f'{item} score is {itemsweight[yindex]}')
                     yindex+=1
                     
-                FINAL_SCORE.append((item,sum))
+                SCORES.append((item,sum))
+   
+            FINAL_SCORE=predictWinner(SCORES)
 
-            print(FINAL_SCORE)
-
-
-
-            return render_template("finalpage.html",errormessage="Calculating",listoffactor=app.config['listoffactor'],listofitems=app.config['listofitems'])
+            return render_template("result.html",errormessage="",scoresdata=FINAL_SCORE)
 
 
 
@@ -100,6 +98,20 @@ def finalpage():
     return render_template("finalpage.html",errormessage="",listoffactor=app.config['listoffactor'],listofitems=app.config['listofitems'])
 
 
+@app.route("/pageAction4", methods=['GET','POST'])
+def scoresPage():
+    if request.method=='POST':
+        submitType=request.form.get('submitType')
+        if submitType=='start':
+            app.config['listofitems']=[]
+            app.config['listoffactor']=[]
+            return render_template("index.html",errormessage="",listofitems=app.config['listofitems'])
+        if submitType=='back':
+            return render_template("finalpage.html",errormessage="",listoffactor=app.config['listoffactor'],listofitems=app.config['listofitems'])
+
+def predictWinner(scoredata):
+    scoredata=sorted(scoredata,key=lambda x:(-x[1],x[0]))
+    return scoredata
 
 
 
